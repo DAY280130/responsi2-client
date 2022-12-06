@@ -2,13 +2,18 @@ import { Injectable } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
 import { AlertController } from '@ionic/angular';
 import { ApiService } from './api.service';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AccountService {
   endpoint: string = 'accounts';
-  constructor(private api: ApiService, private alertCtrl: AlertController) {}
+  constructor(
+    private api: ApiService,
+    private alertCtrl: AlertController,
+    private auth: AuthenticationService
+  ) {}
 
   async login(username: string, password: string): Promise<Object> {
     const result = { login_status: '', message: '' };
@@ -19,6 +24,7 @@ export class AccountService {
         // console.log(res);
         if (res.data.login_status === 'success') {
           await Preferences.set({ key: 'token', value: res.data.token });
+          await Preferences.set({ key: 'user', value: username });
           this.alertCtrl
             .create({
               header: 'Notifikasi',
@@ -43,5 +49,11 @@ export class AccountService {
       });
 
     return result;
+  }
+
+  logout(): void {
+    this.auth.isAuthenticated.next(false);
+    Preferences.clear();
+    location.reload();
   }
 }

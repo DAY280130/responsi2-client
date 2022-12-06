@@ -1,27 +1,54 @@
-#container {
+.welcome {
+  font-size: 1.3rem;
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+ion-grid {
+  margin-top: 2rem;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
+ion-modal ion-grid {
   margin: 0;
 }
 
-#container a {
-  text-decoration: none;
+ion-modal {
+  min-height: 100vh !important;
+
+  ion-item {
+    --padding-start: 0;
+    --padding-end: 0;
+    --inner-padding-end: 0;
+  }
+
+  ion-button {
+    min-width: 7rem;
+  }
 }
+
+// #container {
+//   text-align: center;
+
+//   position: absolute;
+//   left: 0;
+//   right: 0;
+//   top: 50%;
+//   transform: translateY(-50%);
+// }
+
+// #container strong {
+//   font-size: 20px;
+//   line-height: 26px;
+// }
+
+// #container p {
+//   font-size: 16px;
+//   line-height: 22px;
+
+//   color: #8c8c8c;
+
+//   margin: 0;
+// }
+
+// #container a {
+//   text-decoration: none;
+// }

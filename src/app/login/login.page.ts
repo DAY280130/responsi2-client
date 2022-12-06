@@ -6,17 +6,14 @@ import { AccountService } from '../services/account.service';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
   username: string = '';
   password: string = '';
 
   constructor(private acc: AccountService) {}
 
   login() {
-    console.log(this.username, this.password);
-
+    // console.log(this.username, this.password);
     this.acc.login(this.username, this.password);
   }
-
-  ngOnInit() {}
 }
