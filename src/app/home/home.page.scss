@@ -7,6 +7,22 @@ ion-grid {
   margin-top: 2rem;
 }
 
+.name {
+  display: inline-block;
+  min-width: 50px;
+}
+
+.number {
+  color: var(--ion-color-medium);
+  min-width: 100px;
+}
+
+ion-item.contacts {
+  @media (max-width: 600px) {
+    font-size: 0.7rem;
+  }
+}
+
 ion-modal ion-grid {
   margin: 0;
 }

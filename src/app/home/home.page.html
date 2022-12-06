@@ -18,9 +18,22 @@
     color="primary"
     expand="block"
     shape="round"
-    (click)="openModal('add')"
+    (click)="openModal('add', '')"
     >Tambah Kontak</ion-button
   >
+  <ion-list>
+    <ion-item *ngFor="let contact of contacts" class="contacts">
+      <span class="name">{{contact.name}}</span>
+      &nbsp;|&nbsp;
+      <span class="number">{{contact.number}}</span>
+      <ion-button color="primary" (click)="openModal('edit', contact.id)">
+        <ion-icon name="create-outline"></ion-icon>
+      </ion-button>
+      <ion-button color="danger" (click)="deleteContact(contact.id)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
   <ion-modal
     [isOpen]="isModalOpen"
     backdropDismiss="false"
@@ -67,8 +80,8 @@
                 color="primary"
                 slot="end"
                 shape="round"
-                (click)="addContact()"
-                >Tambah Kontak</ion-button
+                (click)="submit()"
+                >{{(mode == 'add') ? 'Tambah' : 'Ubah'}} Kontak</ion-button
               >
             </ion-item>
           </ion-col>
